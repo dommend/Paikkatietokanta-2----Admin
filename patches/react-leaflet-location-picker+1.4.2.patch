@@ -1,0 +1,29 @@
+diff --git a/node_modules/react-leaflet-location-picker/dist/LocationPicker.js b/node_modules/react-leaflet-location-picker/dist/LocationPicker.js
+index 75872a9..f5d9700 100644
+--- a/node_modules/react-leaflet-location-picker/dist/LocationPicker.js
++++ b/node_modules/react-leaflet-location-picker/dist/LocationPicker.js
+@@ -22,7 +22,7 @@ const defaultProps = {
+     geoserver: false,
+     geoURL: "",
+     geoLayer: "",
+-    mapStyle: { height: 300, width: "auto" },
++    mapStyle: { height: "100%", width: "100%" },
+     bindMap: true,
+     startPort: "default",
+     overlayAll: true,
+@@ -57,12 +57,13 @@ const mapBounds = [
+     [90, 180]
+ ];
+ const defaultViewport = {
+-    center: [30, 0],
+-    zoom: 2
++    center: [49.153, 34.1016],
++    zoom: 1
+ };
+ class LocationPicker extends react_1.Component {
+     constructor(props) {
+         super(props);
++        
+         this.componentDidMount = () => {
+             // @ts-ignore
+             const map = this.refs.map;

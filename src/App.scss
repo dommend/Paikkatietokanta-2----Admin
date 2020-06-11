@@ -1,0 +1,1050 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap);
+
+body {
+  overflow: hidden;
+}
+
+/* Colors */
+$primary: #4ca9f7;
+$secondary: #0088fa;
+$third: #60adec;
+$fourth: #276997;
+$fifth: #1c5581;
+$sixth: #4496d7;
+
+$base: #333;
+$base2: #666;
+$base3: #999;
+
+$neutral1: #fff;
+$neutral2: #f1f1f1;
+$neutral3: #f2f2f2;
+$neutral4: #cde6fb;
+$neutral5: #ccc;
+$neutral6: #ddd;
+$neutral7: #f9f9f9;
+
+$alert: red;
+$ok: rgb(13, 163, 46);
+$ok-hover: rgb(15, 209, 57);
+$special: rgb(202, 23, 23);
+$special-hover: rgb(255, 238, 0);
+$favorie: crimson;
+
+$alert: red;
+$ok: rgb(13, 163, 46);
+$ok-hover: rgb(15, 209, 57);
+$special: rgb(202, 23, 23);
+$special-hover: rgb(255, 238, 0);
+$special2: rgb(255, 174, 0);
+$favorite: crimson;
+
+
+* {
+  transition: none !important;
+}
+
+/** General **/
+#page::-webkit-scrollbar {
+  width: 10px;
+}
+
+#page {
+  scrollbar-color: $neutral5 white;
+  scrollbar-width: thin;
+}
+
+#page::-webkit-scrollbar-thumb {
+  background: $neutral5;
+}
+
+.flex {
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -moz-flex-warp: warp;
+  -webkit-box-pack: flex-around;
+  -ms-flex-pack: flex-around;
+  justify-content: flex-around;
+  -webkit-justify-content: space-around;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  flex-direction: row;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.locationGrid-page .react-slicer__view,
+.flex-left {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 0 1 auto;
+  -webkit-box-flex: 0;
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+
+a,
+a:visited {
+  color: $secondary;
+}
+
+a:hover,
+a:active {
+  color: $special;
+}
+
+/** Base **/
+.container {
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: $neutral3;
+  position: absolute;
+}
+
+#page {
+  height: calc(100vh - 56px);
+  width: 100%;
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: $neutral3;
+}
+
+.innerwidth {
+  max-width: 1280px;
+  width: auto;
+  margin: 0 auto !important;
+}
+
+#page .innerwidth {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+.innercontainer {
+  margin: 20px;
+}
+
+#page .innercontainer {
+  margin: 20px 25px 30px 25px;
+}
+
+#page.content-page .innercontainer {
+  background: $neutral1 !important;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.innercontainer.search {
+  width: auto !important;
+}
+
+main {
+  position: relative;
+}
+
+/** List and forms **/
+.list {
+  text-align: left;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+input:required,
+textarea:required {
+  border-color: $ok;
+}
+
+input:invalid,
+textarea:invalid {
+  border-color: $alert;
+}
+
+span.required {
+  color: $alert;
+}
+
+.open,
+.edit {
+  font-size: .7rem;
+  padding: 5px;
+  width: 150px;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid $neutral6;
+
+}
+
+a.open,
+a.open:visited {
+  color: $secondary;
+}
+
+a.open:hover {
+  text-decoration: none;
+  background: $secondary;
+  border-color: $secondary;
+  color: $neutral1;
+}
+
+a.edit,
+a.edit:visited {
+  color: $special;
+}
+
+a.edit:hover {
+  text-decoration: none;
+  background: $special;
+  border-color: $special;
+  color: $neutral1;
+}
+
+.subdetails button {
+  border: 0px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.subdetails button:hover {
+  background: $special;
+}
+
+.coordinatedetails {
+  margin-bottom: 30px !important;
+}
+
+.white-space {
+  white-space: pre-wrap;
+}
+
+code {
+  color: $special;
+}
+
+blockquote {
+  background: $neutral7;
+  padding: 20px 30px 20px 30px;
+}
+
+blockquote ol {
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  list-style: none,
+}
+
+blockquote ol li {
+  margin-bottom: 10px;
+  counter-increment: my-awesome-counter;
+}
+
+blockquote ol li:last-child {
+  margin-bottom: 0px;
+}
+
+ol li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: $special;
+  font-size: .9em;
+}
+
+.btn-secondary {
+  background: $secondary;
+  border-color: $secondary
+}
+
+.btn-secondary:hover {
+  background: $special;
+  border-color: $special
+}
+
+.btn-secondary.focus,
+.btn-secondary:focus,
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background: $ok !important;
+  border-color: $ok;
+}
+
+.btn-outline-info {
+  color: $secondary;
+  border-color: $neutral6;
+  padding: 15px;
+}
+
+.btn-outline-info:hover {
+  color: $neutral1;
+  border-color: $fourth;
+  background-color: $fourth;
+}
+
+/** Add, edit, places **/
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.subdetails {
+  margin: 0 15px 0 15px;
+}
+
+.form-group {
+  background: $neutral1;
+  padding: 20px 30px;
+  border-radius: 5px;
+}
+
+form label {
+  font-weight: bold;
+  font-size: .9em;
+}
+
+form input[type=radio] {
+  font-size: 1px;
+}
+
+form input,
+form textarea {
+  margin: 5px 0px 20px 0px;
+  border-radius: 5px !important;
+}
+
+small {
+  font-size: .8em;
+}
+
+small.even-smaller {
+  font-size: .69em;
+  color: #999;
+}
+
+
+.go-back .material-icons {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.go-back {
+  font-size: .7em;
+  border-radius: 20px;
+  background: transparent;
+  padding: 5px 20px 5px 12px;
+  border: 1px solid $neutral6;
+  font-weight: bold;
+  color: $base2;
+}
+
+.go-back:hover {
+  background: $primary;
+  border-color: $primary;
+  color: $neutral1;
+}
+
+.addlocation .go-back,
+.editlocation .go-back {
+  margin-bottom: 20px;
+}
+
+.editlocation #featuredImage {
+  width: 100%;
+}
+
+
+/** Nav **/
+.navbar {
+  z-index: 1 !important;
+  position: relative;
+  width: 100%;
+}
+
+.navbar-dark .navbar-brand {
+  font-size: .9em;
+  font-weight: bold;
+  margin-left: -10px;
+  margin-right: 0px
+}
+
+nav {
+  background: $primary;
+  color: $neutral1;
+}
+
+nav a,
+nav a:visited {
+  font-size: .95em;
+  color: $neutral1 !important;
+  margin: 0px 5px 0px 5px;
+  border-radius: 5px;
+  padding: 8px 10px 9px 10px !important;
+}
+
+nav ul {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+nav a:hover,
+nav a:active,
+nav .nav-link.active,
+nav .nav-link.active:hover {
+  color: $neutral1;
+  background: $secondary;
+}
+
+nav a .material-icons {
+  font-size: 15px !important;
+  position: relative;
+  top: 2.5px;
+  margin-right: 2px;
+}
+
+nav .nav-link.back-to-client {
+  background: $fifth;
+  font-size: .9.5em;
+}
+
+nav .nav-link.back-to-client:hover {
+  background: $special;
+}
+
+nav .nav-link.back-to-client .material-icons {
+  font-size: .9em !important;
+  position: relative;
+  top: 2px;
+  left: 1px;
+}
+
+nav .nav-link.add-new {
+  background: $fifth;
+}
+
+nav .nav-link.add-new:hover {
+  background: $special;
+}
+
+nav #logo:hover {
+  background: transparent;
+}
+
+nav .navbar-toggler {
+  border-color: $neutral4;
+}
+
+nav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>") !important;
+}
+
+nav a.navbar-brand:hover,
+nav a.navbar-brand:active {
+  background: transparent !important;
+}
+
+
+/** Ennen lataamista **/
+.top__pagination,
+.bottom__pagination {
+  display: none !important;
+}
+
+.throbber-loader {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px,
+}
+
+/** Lataamisen jäkeen */
+
+body.locations-loaded .throbber-loader {
+  display: none !important;
+}
+
+body.locations-loaded .top__pagination,
+body.locations-loaded .bottom__pagination {
+  display: block !important;
+}
+
+#page.location-management #filter {
+  margin-top: 0px;
+  margin-bottom: 20px !important;
+}
+
+
+
+.btn-secondary.focus,
+.btn-secondary:focus .material-icons,
+.btn-secondary:not(:disabled):not(.disabled):active .material-icons {
+  color: $neutral1 !important;
+}
+
+/** Single page and Location list **/
+.coordinates {
+  font-size: .8em;
+}
+
+.coordinates .material-icons {
+  font-size: 1em;
+  top: 2px;
+  position: relative;
+}
+
+.react-player {
+  margin: 20px 0px 20px 0px;
+}
+
+a.link-to-out .material-icons,
+a.link-to-out .material-icons,
+a.link-to-flickr .material-icons,
+a:visited.link-to-flickr .material-icons {
+  font-size: 1.2em;
+  position: relative;
+  margin-right: 5px;
+  top: 4px;
+}
+
+.meta {
+  margin-top: 20px;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: .9rem !important;
+}
+
+a.link-to-out,
+a.link-to-out,
+a.link-to-flickr,
+a:visited.link-to-flickr {
+  font-size: .75em;
+  color: $base2;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.flickr-lightbox-container {
+  position: relative;
+}
+
+.flickr-lightbox div {
+  background: $neutral1;
+}
+
+.flickr-lightbox {
+  margin: 25px 0px 10px 0px;
+  min-height: 45px;
+  position: relative;
+  z-index: 1;
+}
+
+.flickr-lightbox img {
+  width: 55px;
+  height: 55px;
+  background: $neutral5;
+  position: relative;
+}
+
+.flickr-lightbox-container .three-quarters-loader {
+  position: absolute !important;
+  left: 50% !important;
+  top: 15px !important;
+}
+
+
+.location-management {
+  padding: 0px 0px 40px 0px;
+}
+
+.location-management .welcome {
+  background: $neutral1;
+  padding: 30px;
+  font-size: .9rem;
+  border-radius: 5px;
+}
+
+.location-management .favorite {
+  color: $favorite
+}
+
+.location-management .leaflet-container {
+  height: 100% !important;
+}
+
+.location-management .row {
+  padding: 20px 0px 20px 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.location-management .row .headline h6 {
+  font-size: .95em;
+}
+
+.location-management .row .headline .MuiIcon-root {
+  font-size: 1rem;
+}
+
+.location-management .row .description {
+  font-size: .8em !important;
+  margin: 0px 20px 0px 20px;
+}
+
+.location-management .row:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.location-management .row:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+
+.location-management .row:nth-of-type(even) {
+  background: $neutral7;
+}
+
+.location-management .row:nth-of-type(odd) {
+  background: $neutral1;
+}
+
+.location-management .row:last-of-type {
+  margin-bottom: 20px;
+}
+
+.location-management .control .open,
+.location-management .control .edit {
+  margin: 0 auto !important;
+  position: relative;
+  top: 8px;
+}
+
+.locationView-page .container {
+  background: $neutral1;
+}
+
+.locationView-page .map {
+  margin-left: -30px;
+}
+
+.locationView-page .map .leaflet-container {
+  height: calc(100vh - 56px);
+}
+
+.locationView-page .details {
+  overflow-y: auto;
+  height: calc(100vh - 56px);
+  margin-right: -15px;
+
+}
+
+.locationView-page .details h4 {
+  margin-top: 20px;
+}
+
+h4 .material-icons {
+  display: inline-block;
+  right: 20px;
+  position: absolute;
+}
+
+.locationView-page .details .go-back .material-icons {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.locationView-page .details .go-back {
+  font-size: .7em;
+  border-radius: 20px;
+  background: transparent;
+  padding: 5px 20px 5px 12px;
+  border: 1px solid $neutral6;
+  font-weight: bold;
+  color: $base2;
+}
+
+.locationView-page .details .go-back:hover {
+  background: $primary;
+  border-color: $primary;
+  color: $neutral1;
+}
+
+.locationView-page .player-wrapper {
+  margin-bottom: 40px;
+}
+
+.locationView-page .edit {
+  margin-top: 20px;
+}
+
+.react-slicer {
+  display: block;
+}
+
+.location-management .top__pagination,
+.location-management .bottom__pagination {
+  margin-left: 5px;
+}
+
+.location-management .page-navigation {
+  display: flex;
+  margin-top: 0px
+}
+
+.location-management ul.pagination {
+  margin: 0 auto;
+  text-align: center;
+  font-size: .86rem;
+}
+
+.location-management ul.pagination .material-icons {
+  font-size: .8rem;
+  margin: 0px;
+  position: relative;
+  top: 2.3px;
+}
+
+.location-management #pagination {
+  margin-bottom: 15px !important;
+}
+
+.location-management .date .material-icons {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.location-management .date div,
+.location-management .coordinates {
+  font-size: .7rem;
+  display: inline-block;
+  margin: 5px 5px 0px 0px;
+  background: $neutral2;
+  display: inline-block;
+  padding: 2px 5px 2px 5px;
+  border-radius: 5px;
+}
+
+.location-management .date .material-icons,
+.location-management .coordinates .material-icons {
+  font-size: .7rem;
+  top: 2px;
+  position: relative;
+}
+
+
+/** Search **/
+.search-page .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}
+.search-page .search-head { background:$neutral1; position:sticky; top:0px; padding-top:10px;}
+.search-page .result { padding:5px 8px 5px 8px; font-size:.95rem;}
+.search-page .result time { margin-right:10px;}
+.search-page .result:nth-child(odd) { background:$neutral7;}
+
+/** Video, lightbox, player & toast **/
+.Toastify__toast--default {
+  background: $neutral1 !important;
+  color: $base !important;
+  padding: 25px !important;
+  font-size: .9em;
+  border-radius: 5px !important;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#lightboxBackdrop {
+  z-index: 9991;
+}
+
+
+.addlocation .btn,
+.editlocation .btn {
+  height: 60px;
+  width: 80px;
+}
+
+.btn-picklocation {
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 20px;
+}
+
+.coordinates .col-sm:first-of-type {
+  padding-left: 0px !important;
+}
+
+.coordinates .col-sm:last-of-type {
+  padding-right: 0px !important;
+}
+
+.addlocation button.btn.btn-success:hover,
+.editlocation button.btn.btn-success:hover {
+  background: $special2;
+}
+
+.addlocation button.btn.btn-danger,
+.editlocation button.btn.btn-danger {
+  background: $base;
+}
+
+.addlocation button.btn.btn-danger:hover .editlocation button.btn.btn-danger:hover {
+  background: $special;
+}
+
+.addlocation .leaflet-container,
+.editlocation .leaflet-container {
+  min-height: 150px !important;
+  width: 100%;
+}
+
+.col-sm-8 .leaflet-container {
+  min-height: 100% !important;
+}
+
+.coordinatedetails .col-sm:first-of-type {
+  padding-left: 0px !important;
+}
+
+.coordinatedetails .col-sm:last-of-type {
+  padding-right: 0px !important;
+}
+
+.flex-container.flex-wrap.some-margin {
+  position: absolute;
+  bottom: -52px !important;
+}
+
+.flex-container.flex-wrap.some-margin h3,
+h5.full-height.no-margin.text {
+  font-size: .9rem;
+}
+
+.flex-container.some-margin {
+  position: absolute;
+  bottom: -63px;
+  font-size: .9rem;
+}
+
+@media screen and (min-width: 1600px) {
+  .react-slicer__view {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+
+@media screen and (max-width: 1400px) {
+  .row {
+    width: 100% !important;
+  }
+
+}
+
+@media screen and (max-width: 875px) {
+
+
+  .location-management .row {
+    margin: 0px !important;
+  }
+
+  .location-management .row:last-of-type {
+    margin-bottom: 30px !important;
+  }
+
+  .location-management .headline,
+  .location-management .map {
+    margin: 10px 0px 10px 0px;
+  }
+
+  .location-management .description {
+    margin: 0px !important;
+    font-size: .7em !important;
+    padding: 10px;
+  }
+
+  .location-management .control {
+    flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .location-management .control a.open,
+  .location-management .control a.edit {
+    width: auto !important;
+    margin: 5px 0px 0px 0px !important;
+    width: 100px !important;
+    margin: 0px !important;
+  }
+}
+
+
+@media screen and (max-width: 766px) {
+  form .subdetails {
+    margin: 0px;
+  }
+
+  .subdetails {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  .subdetails .col-sm-4,
+  .subdetails .col-sm-5 {
+    max-width: 100% !important;
+  }
+
+  .subdetails .col-sm-5 {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .subdetails button {
+    width: 100% !important;
+  }
+
+
+  .editlocation .form-group,
+  .addlocation .form-group {
+    border-radius: 0px !important;
+  }
+
+  .editlocation .row,
+  .addlocation .row {
+    width: 100% !important;
+    display: block !important;
+    margin: 0px !important;
+  }
+
+  .col-sm {
+    padding: 0px;
+  }
+
+  .locationView-page .map {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 100vw !important;
+    height: 200px !important;
+  }
+
+  .locationView-page .map .leaflet-container {
+    height: 200px !important;
+  }
+
+  .locationView-page .details {
+    margin-top: 200px !important;
+    height: auto;
+  }
+
+  nav ul li {
+    display: block;
+  }
+
+  nav ul li a.nav-link,
+  nav ul li a.nav-link:visited {
+    padding: 10px;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    border-radius: 0px;
+  }
+
+  nav .nav-link.add-new {
+    position: static;
+    background: transparent;
+  }
+
+  nav .nav-link.add-new:hover,
+  nav a:hover,
+  nav a:active,
+  nav .nav-link.active,
+  nav .nav-link.active:hover {
+    color: $neutral1;
+    background: $fifth;
+  }
+
+  div#basic-navbar-nav {
+    background: $fourth;
+    margin: 10px -16px -8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav .module {
+    display: none;
+  }
+
+  #page .throbber-loader {
+    left: 48% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .location-management .row .description {
+    padding: 0px;
+    margin: -20px 0 0 0 !important;
+  }
+
+  .location-management .row .control {
+    margin: 15px 0px 0px 0px;
+    flex-direction: row;
+  }
+
+  .location-management .row .control a.open {
+    margin: 0px 5px 0px 0px !important;
+  }
+
+  .location-management .row .control a.edit {
+    margin: 0px 0px 0px 5px !important;
+  }
+}

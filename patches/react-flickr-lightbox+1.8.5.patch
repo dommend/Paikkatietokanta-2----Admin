@@ -1,0 +1,44 @@
+diff --git a/node_modules/react-flickr-lightbox/es/index.js b/node_modules/react-flickr-lightbox/es/index.js
+index 35aeead..e265909 100644
+--- a/node_modules/react-flickr-lightbox/es/index.js
++++ b/node_modules/react-flickr-lightbox/es/index.js
+@@ -24,7 +24,7 @@ var FlickrLightbox = /*#__PURE__*/function (_Component) {
+     _this = _Component.call(this, _props) || this;
+ 
+     _defineProperty(_assertThisInitialized(_this), "generateApiUrl", function (props) {
+-      var extras = ["url_o", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
++      var extras = ["url_l", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
+       return buildUrl('https://api.flickr.com', {
+         path: 'services/rest/',
+         queryParams: {
+@@ -52,7 +52,7 @@ var FlickrLightbox = /*#__PURE__*/function (_Component) {
+         _this.setState({
+           images: data.photos.photo.map(function (p) {
+             return {
+-              src: p.url_o || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
++              src: p.url_l || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
+               thumbnail: p[props.thumbnailSizeParam],
+               caption: (p.title || 'Untitled') + ": Photo by " + p.ownername
+             };
+diff --git a/node_modules/react-flickr-lightbox/lib/index.js b/node_modules/react-flickr-lightbox/lib/index.js
+index 776011b..0864581 100644
+--- a/node_modules/react-flickr-lightbox/lib/index.js
++++ b/node_modules/react-flickr-lightbox/lib/index.js
+@@ -39,7 +39,7 @@ var FlickrLightbox = /*#__PURE__*/function (_Component) {
+     _this = _Component.call(this, _props) || this;
+ 
+     _defineProperty(_assertThisInitialized(_this), "generateApiUrl", function (props) {
+-      var extras = ["url_o", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
++      var extras = ["url_l", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
+       return (0, _buildUrl["default"])('https://api.flickr.com', {
+         path: 'services/rest/',
+         queryParams: {
+@@ -67,7 +67,7 @@ var FlickrLightbox = /*#__PURE__*/function (_Component) {
+         _this.setState({
+           images: data.photos.photo.map(function (p) {
+             return {
+-              src: p.url_o || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
++              src: p.url_l || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
+               thumbnail: p[props.thumbnailSizeParam],
+               caption: (p.title || 'Untitled') + ": Photo by " + p.ownername
+             };
