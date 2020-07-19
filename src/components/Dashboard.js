@@ -214,6 +214,11 @@ class GridView extends React.Component {
                 </ShowMoreText>
               </div>
               <div className="col-sm control">
+
+              {location.published
+                  ? <div className="green text-center"><small><strong>Julkaistu</strong></small></div>
+                  : <div className="red text-center"><small><strong>Luonnos</strong></small></div>}
+
                 <p>
                   <Link to={'/edit/' + location.id} className="open">
                     Muokkaa
@@ -241,7 +246,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.currentPage - 1}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">chevron_left</span>
+                  <span className="material-icons">chevron_left</span>
                 </Link>
               </li>
               {pager.pages.map (page => (

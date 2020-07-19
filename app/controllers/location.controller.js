@@ -24,7 +24,8 @@ exports.create = (req, res) => {
     url: req.body.url,
     flickrTag: req.body.flickrTag,  
     flickrMore: req.body.flickrMore,  
-    featuredImage: req.body.featuredImage
+    featuredImage: req.body.featuredImage,
+    published: req.body.published
   };
 
   // Save Location in the database

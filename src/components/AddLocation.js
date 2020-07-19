@@ -429,39 +429,66 @@ const pointMode = {
                   </div>
                 </div>
               </div>
-              <div className="form-group subdetails">
-                <div className="row">
+              <div className="form-group subdetails published">
+                  <div className="row">
                   <div className="col-sm-4">
-                    <label>Tärkeysaste</label>
-                    <p>
-                      <small>
-                        Tärkeysaste on default määritteenä "Ei-tärkeä".
-                      </small>
-                    </p>
-                  </div>
-                  <div className="col-sm import">
-                    <label htmlFor="important">Tärkeä</label>
-                    <input
-                      type="radio"
-                      className="form-control"
-                      id="markedImportant_yes"
-                      value="true"
-                      onChange={handleInputChange}
-                      name="markedImportant"
-                    />
-                  </div>
-                  <div className="col-sm">
-                    <label htmlFor="not-important">Ei-tärkeä</label>
-                    <input
-                      type="radio"
-                      className="form-control"
-                      id="markedImportant_no"
-                      value="false"
-                      onChange={handleInputChange}
-                      name="markedImportant"
-                    />
-                  </div>
-                  <div className="col-sm" />
+                      <label>Julkaisun tila:</label>
+                    </div>
+                <div className="col-sm-3 import">
+                      <label htmlFor="published">Luonnos</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="published_no"
+                        value="false"
+                        onChange={handleInputChange}
+                        name="published"
+                      />
+                    </div>
+                    <div className="col-sm">
+                      <label htmlFor="not-published">Julkaistu</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="published_yes"
+                        value="true"
+                        onChange={handleInputChange}
+                        name="published"
+                      />
+                    </div> </div></div>
+                <div className="form-group subdetails important">
+                  <div className="row">
+        
+                    <div className="col-sm-4">
+                      <label>Tärkeysaste</label>
+                    </div>
+                    <div className="col-sm-3 import">
+                      <label htmlFor="important">Tärkeä</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="markedImportant_yes"
+                        value="true"
+                        onChange={handleInputChange}
+                        name="markedImportant"
+                      />
+                    </div>
+                    <div className="col-sm">
+                      <label htmlFor="not-important">Ei-tärkeä</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="markedImportant_no"
+                        value="false"
+                        onChange={handleInputChange}
+                        name="markedImportant"
+                      />
+                    </div>
+         
+                  </div></div>
+                  <div className="form-group subdetails">
+                  <div className="row">
+                <div className="col-sm">
 
                   <button
                     type="button"
@@ -475,7 +502,7 @@ const pointMode = {
                   >
                     Tallenna
                   </button>
-                </div>
+                </div>   </div>
               </div>
             </div>
           </form>}

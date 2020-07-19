@@ -37,6 +37,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     featuredImage: {
       type: Sequelize.TEXT('long')
+    },
+    published: {
+      type: Sequelize.BOOLEAN,
+      trim: true
     }
   });
 

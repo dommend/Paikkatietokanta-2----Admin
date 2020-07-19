@@ -5,7 +5,7 @@ const app = express();
 
 // Enable Cors
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: ['http://localhost:8080', 'http://localhost:8081', 'https://admin.paikkatietokanta.net', 'https://www.admin.paikkatietokanta.net']
 };
 
 app.use(cors(corsOptions));

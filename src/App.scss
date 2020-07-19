@@ -344,6 +344,9 @@ small.even-smaller {
 }
 
 
+.green { color:$ok;}
+.red { color:$alert;}
+
 .go-back .material-icons {
   font-size: .8em;
   font-weight: bold;
@@ -373,7 +376,11 @@ small.even-smaller {
 .editlocation #featuredImage {
   width: 100%;
 }
+.subdetails,
+.important { margin-top:20px;}
 
+.addlocation .subdetails button,
+.editlocation .subdetails button { width:100%;}
 
 /** Nav **/
 .navbar {
@@ -1034,6 +1041,8 @@ h5.full-height.no-margin.text {
     padding: 0px;
     margin: -20px 0 0 0 !important;
   }
+
+  .location-management .row .control > div { margin-right:15px;}
 
   .location-management .row .control {
     margin: 15px 0px 0px 0px;

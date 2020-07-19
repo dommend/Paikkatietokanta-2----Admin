@@ -37,7 +37,9 @@ const Location = props => {
     flickrTag: '',
     flickrMore: '',
     featuredImage: '',
+    published: true,
   };
+  
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
 
   const getLocation = id => {
@@ -156,6 +158,10 @@ const Location = props => {
                 {' '}
                 Takaisin edelliselle sivulle
               </button>
+
+              {currentLocation.published
+                  ? <h4 className="green">Julkaistu</h4>
+                  : <h4 className="red">Luonnos</h4>}
               <h3>Muokkaa '{currentLocation.title}' sijaintia</h3>
               <p>
                 <small>
@@ -421,31 +427,45 @@ const Location = props => {
                     </div>
                   </div>
                 </div>
-                <div className="form-group subdetails">
+
+                <div className="form-group subdetails published">
                   <div className="row">
-                    <div className="col-sm">
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={e => {
-                          if (
-                            window.confirm (
-                              'Haluatko varmasti poistaa kohteen?'
-                            )
-                          )
-                            deleteLocation (e);
-                        }}
-                      >
-                        Poista
-                      </button>
+                  <div className="col-sm-4">
+                      <label>Julkaisun tila:</label>
+                      {currentLocation.published
+                  ? <p className="green"><small><strong>Julkaistu</strong></small></p>
+                  : <p className="red"><small><strong>Luonnos</strong></small></p>}
                     </div>
+                <div className="col-sm-3 import">
+                      <label htmlFor="published">Luonnos</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="published_no"
+                        value="false"
+                        onChange={handleInputChange}
+                        name="published"
+                      />
+                    </div>
+                    <div className="col-sm">
+                      <label htmlFor="not-published">Julkaistu</label>
+                      <input
+                        type="radio"
+                        className="form-control"
+                        id="published_yes"
+                        value="true"
+                        onChange={handleInputChange}
+                        name="published"
+                      />
+                    </div> </div></div>
+                <div className="form-group subdetails important">
+                  <div className="row">
+        
                     <div className="col-sm-4">
                       <label>Tärkeysaste</label>
-                      <p>
-                        <small>
-                          Tärkeysaste on default määritteenä "Ei-tärkeä".
-                        </small>
-                      </p>
+                      {currentLocation.markedImportant
+                  ? <p className="green"><small><strong>Tärkeä</strong></small></p>
+                  : <p className="red"><small><strong>Ei-tärkeä</strong></small></p>}
                     </div>
                     <div className="col-sm-3 import">
                       <label htmlFor="important">Tärkeä</label>
@@ -469,7 +489,27 @@ const Location = props => {
                         name="markedImportant"
                       />
                     </div>
-                    <div className="col-sm" />
+         
+                  </div></div>
+                  <div className="form-group subdetails">
+                  <div className="row">
+                <div className="col-sm">
+                <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={e => {
+                          if (
+                            window.confirm (
+                              'Haluatko varmasti poistaa kohteen?'
+                            )
+                          )
+                            deleteLocation (e);
+                        }}
+                      >
+                        Poista
+                      </button>
+                    </div>
+                    <div className="col-sm">
                     <button
                       type="button"
                       className="btn btn-success"
@@ -480,7 +520,7 @@ const Location = props => {
                     >
                       Päivitä
                     </button>
-                  </div>
+                    </div> </div>
                 </div>
               </div>
             </form>
