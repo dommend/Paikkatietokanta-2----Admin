@@ -1,7 +1,3 @@
-@import '~leaflet/dist/leaflet.css';
-@import '~react-leaflet-markercluster/dist/styles.min.css';
-@import '~material-design-icons/iconfont/material-icons.css';
-
 
 /* roboto-regular - latin */
 @font-face {
@@ -104,52 +100,30 @@ $special: rgb(202, 23, 23);
 $special-hover: rgb(255, 238, 0);
 $favorie: crimson;
 
+$alert: red;
+$ok: rgb(13, 163, 46);
+$ok-hover: rgb(15, 209, 57);
+$special: rgb(202, 23, 23);
+$special-hover: rgb(255, 238, 0);
+$special2: rgb(255, 174, 0);
+$favorite: crimson;
+
 
 * {
   transition: none !important;
 }
 
 /** General **/
-.locationView-page .details::-webkit-scrollbar,
-#place::-webkit-scrollbar,
 #page::-webkit-scrollbar {
   width: 10px;
 }
 
-.leaflet-popup-content .map-innercontainer::-webkit-scrollbar,
-.module-view #details .innercontainer::-webkit-scrollbar,
-.description.white-space::-webkit-scrollbar,
-#place .place-innercontainer::-webkit-scrollbar,
-ul#places::-webkit-scrollbar,
-.leaflet-popup-content-wrapper::-webkit-scrollbar,
-.locationGrid-page .location .innercontainer .location-body::-webkit-scrollbar {
-  width: 5px;
-}
-
-.leaflet-popup-content .map-innercontainer,
-.module-view #details .innercontainer,
-.locationView-page .details,
-.description.white-space,
-#place,
-#page,
-#place .place-innercontainer,
-ul#places,
-.leaflet-popup-content-wrapper,
-.locationGrid-page .location .innercontainer .location-body {
+#page {
   scrollbar-color: $neutral5 white;
   scrollbar-width: thin;
 }
 
-.leaflet-popup-content .map-innercontainer::-webkit-scrollbar-thumb,
-.module-view #details .innercontainer::-webkit-scrollbar-thumb,
-.locationView-page .details::-webkit-scrollbar-thumb,
-.description.white-space::-webkit-scrollbar-thumb,
-#place::-webkit-scrollbar-thumb,
-#page::-webkit-scrollbar-thumb,
-#place .place-innercontainer::-webkit-scrollbar-thumb,
-ul#places::-webkit-scrollbar-thumb,
-.leaflet-popup-content-wrapper::-webkit-scrollbar-thumb,
-.locationGrid-page .location .innercontainer .location-body::-webkit-scrollbar-thumb {
+#page::-webkit-scrollbar-thumb {
   background: $neutral5;
 }
 
@@ -178,6 +152,7 @@ ul#places::-webkit-scrollbar-thumb,
   flex-wrap: wrap;
 }
 
+.locationGrid-page .react-slicer__view,
 .flex-left {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -233,6 +208,7 @@ a:active {
 
 #page .innerwidth {
   margin-top: 30px !important;
+  margin-bottom: 30px !important;
 }
 
 .innercontainer {
@@ -240,7 +216,7 @@ a:active {
 }
 
 #page .innercontainer {
-  margin: 20px 25px 30px 10px;
+  margin: 20px 25px 30px 25px;
 }
 
 #page.content-page .innercontainer {
@@ -254,28 +230,6 @@ a:active {
 }
 
 main {
-  position: relative;
-}
-
-.copyToClipBoard {
-  font-size: .7rem;
-  width: 100% !important;
-  border: 1px solid $neutral2;
-  color: $base3;
-  background: $neutral1;
-  margin-top: 20px;
-  padding: 10px;
-}
-
-.copyToClipBoard:hover {
-  background: $neutral7;
-  border-color: $neutral7;
-}
-
-.copyToClipBoard .material-icons {
-  font-size: .85rem;
-  top: 2px;
-  margin-right: 2px;
   position: relative;
 }
 
@@ -317,22 +271,24 @@ span.required {
 
 }
 
-.open {
+a.open,
+a.open:visited {
   color: $secondary;
 }
 
-.open:hover {
+a.open:hover {
   text-decoration: none;
   background: $secondary;
   border-color: $secondary;
   color: $neutral1;
 }
 
-.edit {
+a.edit,
+a.edit:visited {
   color: $special;
 }
 
-.edit:hover {
+a.edit:hover {
   text-decoration: none;
   background: $special;
   border-color: $special;
@@ -347,6 +303,10 @@ span.required {
 
 .subdetails button:hover {
   background: $special;
+}
+
+.coordinatedetails {
+  margin-bottom: 30px !important;
 }
 
 .white-space {
@@ -383,7 +343,6 @@ ol li::before {
   font-size: .9em;
 }
 
-/** Bootstarp buttons **/
 .btn-secondary {
   background: $secondary;
   border-color: $secondary
@@ -413,17 +372,7 @@ ol li::before {
   background-color: $fourth;
 }
 
-.dropdown-menu.show,
-button#dropdown-basic {
-  width: 200px !important;
-}
-
-a.dropdown-item {
-  font-size: .9em;
-}
-
 /** Add, edit, places **/
-
 .row {
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -455,7 +404,7 @@ form textarea {
 }
 
 small {
-  font-size: .8em;
+  font-size: .85em;
 }
 
 small.even-smaller {
@@ -463,12 +412,51 @@ small.even-smaller {
   color: #999;
 }
 
+
+.green { color:$ok;}
+.red { color:$alert;}
+
+.go-back .material-icons {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.go-back {
+  font-size: .7em;
+  border-radius: 20px;
+  background: transparent;
+  padding: 5px 20px 5px 12px;
+  border: 1px solid $neutral6;
+  font-weight: bold;
+  color: $base2;
+}
+
+.go-back:hover {
+  background: $primary;
+  border-color: $primary;
+  color: $neutral1;
+}
+
+.addlocation .go-back,
+.editlocation .go-back {
+  margin-bottom: 20px;
+}
+
+.editlocation #featuredImage {
+  width: 100%;
+}
+.subdetails,
+.important { margin-top:20px;}
+
+.addlocation .subdetails button,
+.editlocation .subdetails button { width:100%;}
+
 /** Nav **/
 .navbar {
+  z-index: 1 !important;
   position: relative;
   width: 100%;
 }
-
 
 .navbar-dark .navbar-brand {
   font-size: .9em;
@@ -513,15 +501,28 @@ nav .nav-link.active:hover {
 nav a .material-icons {
   font-size: 15px !important;
   position: relative;
-  top: 1.7px;
+  top: 2.5px;
   margin-right: 2px;
 }
 
+nav .nav-link.back-to-client {
+  background: $fifth;
+  font-size: .9.5em;
+}
+
+nav .nav-link.back-to-client:hover {
+  background: $special;
+}
+
+nav .nav-link.back-to-client .material-icons {
+  font-size: .9em !important;
+  position: relative;
+  top: 2px;
+  left: 1px;
+}
+
 nav .nav-link.add-new {
-  background: $secondary;
-  right: 16px;
-  position: absolute;
-  top: 8px;
+  background: $fifth;
 }
 
 nav .nav-link.add-new:hover {
@@ -545,110 +546,32 @@ nav a.navbar-brand:active {
   background: transparent !important;
 }
 
-/** List view (Frontpage) **/
-aside {
-  border-right: 1px solid $neutral2 !important;
-  width: 351px;
-  position: absolute;
-  height: 100vh;
-  z-index: 2;
-}
 
-#places {
-  width: 350px;
-  height: calc(100vh - 160px);
-  position: absolute;
-  overflow-y: auto;
-  border-top: 1px solid $neutral2;
-}
-
-
-#places .list-group-item {
-  border-color: $neutral2;
-  font-size: .95em;
-  border-left: 0px;
-}
-
-#places .list-group-item:first-of-type {
-  border-top: 0px;
-}
-
-#places .list-group-item:last-of-type {
-  border-bottom: 0px;
-}
-
-#places .list-group-item .material-icons {
-  font-size: .9em;
-}
-
-#places .list-group-item:hover {
-  cursor: pointer;
-  background: $neutral4;
-  border-color: $neutral4;
-}
-
-#places .list-group-item.active .coordinates {
-  color: $neutral1;
-}
-
-#places .list-group-item.active {
-  background: $primary;
-  border: 0px solid $primary;
-}
-
-#places .list-group-item .coordinates {
-  font-size: .7em;
-  color: $base3;
-}
-
-#places .list-group-item .coordinates .material-icons {
-  position: relative;
-  top: 1.5px;
-  margin-right: 3px;
-}
-
-#places,
-#places .list-group-item:first-child,
-#places .list-group-item:last-child {
-  border-radius: 0px !important;
-}
-
-#location-list .throbber-loader {
-  position: absolute !important;
-  top: 50vh !important;
-  left: 155px !important;
-  background: $secondary !important;
-  font-size: 8px !important;
-}
-
-#page .throbber-loader {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  background: $secondary !important;
-  font-size: 8px !important;
-}
-
-/** Before page is loaded **/
-.location-management #filter,
-.locationGrid-page #filter {
+/** Ennen lataamista **/
+.top__pagination,
+.bottom__pagination {
   display: none !important;
 }
 
-/** After page is loaded */
+.throbber-loader {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px,
+}
+
+/** Lataamisen jäkeen */
+
 body.locations-loaded .throbber-loader {
   display: none !important;
 }
 
-body.locations-loaded .location-management #filter,
-body.locations-loaded .locationGrid-page #filter {
+body.locations-loaded .top__pagination,
+body.locations-loaded .bottom__pagination {
   display: block !important;
-}
-
-#location-list #filter {
-  text-align: center;
-  width: 350px;
-  margin-bottom: 10px;
 }
 
 #page.location-management #filter {
@@ -656,283 +579,21 @@ body.locations-loaded .locationGrid-page #filter {
   margin-bottom: 20px !important;
 }
 
-#page #filter {
-  text-align: center;
-  margin-top: 20px;
-}
 
-#page #filter button,
-#location-list #filter button {
-  font-size: .85em !important;
-  line-height: 18px;
-  background: $secondary;
-  border-color: $secondary;
-}
-
-#page #filter button:focus,
-#location-list #filter button:focus {
-  background: $ok;
-}
-
-#page #filter button .material-icons,
-#location-list #filter button .material-icons {
-  font-size: 11px;
-  color: $fifth;
-  top: 1px;
-  margin-right: 2px;
-  position: relative;
-}
 
 .btn-secondary.focus,
 .btn-secondary:focus .material-icons,
-.btn-secondary:not(:disabled):not(.disabled):active .material-icons,
-#page #filter button:hover .material-icons,
-#location-list #filter button:hover .material-icons {
+.btn-secondary:not(:disabled):not(.disabled):active .material-icons {
   color: $neutral1 !important;
 }
 
-#page #filter button:first-of-type,
-#location-list #filter button:first-of-type {
-  margin-right: 5px;
-}
-
-#page #filter button:last-of-type,
-#location-list #filter button:last-of-type {
-  margin-left: 5px;
-}
-
-.search {
-  padding: 10px 10px 0px 10px;
-  left: 0px;
-  top: 0px;
-  z-index: 3;
-  background: $neutral1;
-  width: 345px !important;
-}
-
-.search input,
-.search button {
-  position: absolute;
-  top: 3px;
-  height: 35px;
-}
-
-.search button .material-icons {
-  font-size: .9em;
-}
-
-.search input {
-  font-size: .9em;
-}
-
-#place {
-  width: calc(100% - 350px);
-  height: calc(100vh - 56px);
-  overflow-y: auto;
-  left: 350px;
-  top: 0px;
-  position: absolute;
-  background: $neutral1;
-}
-
-.frontpage #place .place-innercontainer {
-  max-height: 300px;
-  overflow-x: auto;
-  margin-bottom: -10px;
-}
-
-#place #details {
-  position: absolute;
-  z-index: 3;
-  width: 504px;
-}
-
-.frontpage #place #details {
-  z-index: 9999;
-  right: 10px;
-  background: $neutral1;
-}
-
-
-.frontpage #place #details .description #featuredImage {
-  width: 30%;
-  float: right;
-  margin: 0px 15px 15px 15px;
-  background: $neutral2;
-}
-
-.frontpage #place #details .no-description #featuredImage {
-  width: auto;
-  margin-right: 4px;
-}
-
-#place #details .meta {
-  clear: both;
-}
-
-#place #details .metadata {
-  font-size: 0.9em;
-  line-height: 1em;
-  background: $neutral3;
-  margin: 30px -20px -23px -20px;
-  border-top: 1px solid $neutral2;
-}
-
-.module-view #place #details .metadata {
-  margin: 30px 0px -23px 0px;
-}
-
-#place #details .player-wrapper {
-  margin-bottom: 50px;
-}
-
-.metadata .button {
-  display: block;
-  padding: 8px;
-  text-align: center;
-  line-height: 2.5em;
-  font-size: .85em;
-  font-weight: bold;
-}
-
-.metadata .open-page.button {
-  width: 100%;
-  background: $neutral1;
-  color: $base;
-}
-
-.metadata .open-page.button:hover {
-  background: $secondary;
-  color: $neutral1;
-  text-decoration: none;
-}
-
-.favorite {
-  color: $favorie;
-}
-
-#welcome {
-  height: calc(100vh - 100px);
-  position: relative;
-  overflow: hidden;
-}
-
-#welcome h1 {
-  font-size: 3vw;
-  margin-top: -20px;
-  font-weight: bold;
-}
-
-#welcome div {
-  margin: 0;
-  text-align: center;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  margin-right: -50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.scramble-container {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.3em !important;
-  font-weight: 500;
-  text-align: center;
-  width: 500px !important;
-  margin-top: -260px !important;
-  position: absolute;
-}
-
-/** Pagination **/
-.page-navigation {
-  display: flex;
-  margin-top: -10px
-}
-
-ul.pagination {
-  margin: 0 auto;
-  text-align: center;
-  font-size: .86rem;
-}
-
-ul.pagination .material-icons {
-  font-size: .8rem;
-  margin: 0px;
-  position: relative;
-  top: 2.3px;
-}
-
-#pagination {
-  margin-bottom: 30px !important;
-}
-
-/** module view **/
-.module-view .leaflet-container {
-  position: relative !important;
-  min-width: 40% !important;
-  float: right !important;
-  z-index: 0;
-}
-
-.module-view #details {
-  left: 0px;
-  position: absolute;
-  width: 60% !important;
-  height: calc(100vh - 58px);
-}
-
-.module-view #details .innercontainer {
-  left: 0px;
-  margin-right: 7px;
-  padding-right: 10px;
-  position: absolute;
-  overflow-y: auto;
-  height: calc(100vh - 140px);
-}
-
-.module-view #place #details .metadata {
-  bottom: 21px;
-  width: 100%;
-  position: absolute;
-}
-
-.module-view .welcome {
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  top: 50.5%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
-
 /** Single page and Location list **/
-.time-and-place {
-  display: flex;
-}
-
-.date .material-icons {
-  margin-right: 5px;
-  font-weight: bold;
-}
-
-.date div,
 .coordinates {
-  font-size: .7rem;
-  background: $neutral4;
-  display: inline-block;
-  margin: 5px 5px 0px 0px;
-  background: $neutral2;
-  display: inline-block;
-  padding: 2px 5px 2px 5px;
-  border-radius: 5px;
+  font-size: .8em;
 }
 
-.date .material-icons,
 .coordinates .material-icons {
-  font-size: .7rem;
+  font-size: 1em;
   top: 2px;
   position: relative;
 }
@@ -941,61 +602,36 @@ ul.pagination .material-icons {
   margin: 20px 0px 20px 0px;
 }
 
-.locationGrid-page .time-and-place .date div,
-.locationGrid-page .time-and-place .coordinates {
-  background: $sixth;
-}
-
-#places .coordinates {
-  background: transparent;
-  color: $base3;
-  margin: 0px;
-  padding: 0px;
-}
-
-#details .coordinates .material-icons {
-  margin-right: 3px;
-}
-
-#fullpage.map-view a.link-to-flickr .material-icons,
-#fullpage.map-view a.link-to-out .material-icons,
-#fullpage.map-view a:visited.link-to-flickr .material-icons {
-  margin-right: 2.5px;
-  top: 2.5px;
-}
-
 a.link-to-out .material-icons,
 a.link-to-out .material-icons,
 a.link-to-flickr .material-icons,
 a:visited.link-to-flickr .material-icons {
-  font-size: .85rem;
+  font-size: 1.2em;
   position: relative;
   margin-right: 5px;
-  top: 3px;
+  top: 4px;
 }
 
 .meta {
   margin-top: 20px;
-  line-height:1.1rem;
 }
 
 .description {
   margin-top: 20px;
-  font-size: .85rem !important;
-  line-height:1.4rem;
+  font-size: .9rem !important;
 }
 
 a.link-to-out,
 a.link-to-out,
 a.link-to-flickr,
 a:visited.link-to-flickr {
-  font-size: .67rem;
+  font-size: .75em;
   color: $base2;
   display: block;
+  white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  white-space: pre;
 }
 
 .flickr-lightbox-container {
@@ -1022,284 +658,24 @@ a:visited.link-to-flickr {
 
 .flickr-lightbox-container .three-quarters-loader {
   position: absolute !important;
-  left: 48% !important;
+  left: 50% !important;
   top: 15px !important;
 }
 
 
-/** Map-view **/
-.leaflet-container {
-  height: calc(100vh - 56px);
-}
-
-#fullpage.map-view .leaflet-container {
-  height: calc(100vh - 56px);
-  width: 100vw !important;
-}
-
-#fullpage.map-view .description {
-  margin-top: 0px;
-}
-
-.leaflet-popup-content-wrapper {
-  width: 290px;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.leaflet-popup-content iframe {
-  width: 240px;
-  height: auto;
-}
-
-.leaflet-popup-content .player-wrapper {
-  margin-bottom: 60px;
-}
-
-.leaflet-popup-content .flickr-lightbox img {
-  width: 57px;
-  height: 57px;
-}
-
-.leaflet-popup-content h5 {
-  margin-top: 10px;
-}
-
-.leaflet-popup-content .metadata {
-  font-size: 0.9em;
-  line-height: 1em;
-  background: $neutral3;
-  margin: 10px 0px;
-  border: 1px solid $neutral2;
-}
-
-.leaflet-popup-content .map-innercontainer {
-  max-height: 210px;
-  overflow-x: auto;
-}
-
-.leaflet-popup-content .description {
-  font-size: 1.05em !important;
-  line-height:1.45em;
-  margin-bottom: -10px;
-}
-
-.leaflet-popup-content .meta {
-  font-size: 1.2em !important;
-}
-
-.leaflet-popup-content .meta a,
-.leaflet-popup-content .meta a:visited {
-  color: $base;
-}
-
-.leaflet-popup-content .button {
-  font-size: 0.98em;
-}
-
-/** Location Grid **/
-.locationGrid-page {
-  padding: 60px 20px 60px 20px;
-}
-
-.locationGrid-page .location {
-  width: 33.3333%;
-  margin-bottom: 10px;
-}
-
-.locationGrid-page .location .innercontainer {
-  background: $neutral1;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01),
-    0 2px 4px rgba(0, 0, 0, 0.01),
-    0 4px 8px rgba(0, 0, 0, 0.01),
-    0 8px 16px rgba(0, 0, 0, 0.01),
-    0 16px 32px rgba(0, 0, 0, 0.01),
-    0 32px 64px rgba(0, 0, 0, 0.01);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01),
-    0 2px 4px rgba(0, 0, 0, 0.01),
-    0 4px 8px rgba(0, 0, 0, 0.01),
-    0 8px 16px rgba(0, 0, 0, 0.01),
-    0 16px 32px rgba(0, 0, 0, 0.01),
-    0 32px 64px rgba(0, 0, 0, 0.01);
-  border-radius: 3px;
-  min-height: 510px;
-  font-size: .9em;
-}
-
-.locationGrid-page .location .metadata {
-  border-bottom: 1px solid $neutral3;
-}
-
-.locationGrid-page .location .location-head {
-  background: $primary;
-  color: $neutral1;
-  padding: 20px;
-  z-index: 9991;
-  border-radius: 3px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  height: 65px;
-}
-
-.locationGrid-page .location .location-head h5 {
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.locationGrid-page .location .location-head h5 a,
-.locationGrid-page .location .location-head h5 a:visited {
-  color: $neutral1;
-  font-weight: normal;
-}
-
-.locationGrid-page .location .location-body {
-  max-height: 446px;
-  overflow-y: auto;
-}
-
-.locationGrid-page .location .location-inner-body {
-  margin: 20px;
-}
-
-.locationGrid-page .leaflet-container {
-  height: 200px;
-}
-
-// Weather
-
-
-#weather p {
-  color: $base;
-  margin: 0px -100px;
-  text-shadow: -0.8px 0.8px 5px $neutral1, 
-  0.8px 0.8px  5px $neutral1, 
-  0.8px -0.8px 5px $neutral1, 
-  0.8px -0.8px 5px $neutral1;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-#weather-bg {
-  height: 100px;
-  margin-top: -130px !important;
-  width: 300px;
-  border: 1px solid $neutral1;
-  border-radius: 10px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 999;
-  background-color: rgba(255, 255, 255, .9);
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01),
-    0 2px 4px rgba(0, 0, 0, 0.01),
-    0 4px 8px rgba(0, 0, 0, 0.01),
-    0 8px 16px rgba(0, 0, 0, 0.01),
-    0 16px 32px rgba(0, 0, 0, 0.01),
-    0 32px 64px rgba(0, 0, 0, 0.01);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01),
-    0 2px 4px rgba(0, 0, 0, 0.01),
-    0 4px 8px rgba(0, 0, 0, 0.01),
-    0 8px 16px rgba(0, 0, 0, 0.01),
-    0 16px 32px rgba(0, 0, 0, 0.01),
-    0 32px 64px rgba(0, 0, 0, 0.01);
-}
-
-@supports ((-webkit-backdrop-filter: blur(3px)) or (backdrop-filter: blur(3px))) {
-  #weather-bg {
-    background: transparent;
-    backdrop-filter: blur(3px);
-  }
-}
-
-.styles_simpleReactWeatherTemp__2PnUn {
-  font-size: 2.3rem !important;
-}
-
-#weather div {
-  position: relative;
-  color: $base;
-  z-index: 9991;
-  text-shadow: -0.8px 0.8px 5px $neutral1, 
-  0.8px 0.8px  5px $neutral1, 
-  0.8px -0.8px 5px $neutral1, 
-  0.8px -0.8px 5px $neutral1;
-}
-
-.frontpage #weather,
-.locationView-page #weather,
-.locationGrid-page #weather {
-  z-index: 400;
-  position: relative;
-  width: 200px;
-}
-
-.locationView-page #weather {
-  margin: 0 auto 0 auto;
-  bottom: 0px;
-  top: 30px;
-  left: 7px;
-}
-
-/* Module and frontpage */
-.frontpage #weather div,
-.module-view #weather div {
-  left: 22px;
-  top: 12px;
-}
-
-.frontpage #weather p.styles_simpleReactWeatherTemp__2PnUn,
-.module-view p.styles_simpleReactWeatherTemp__2PnUn {
-  top: 15px;
-  right: 45px;
-  width: auto;
-  font-size: 1.5rem !important;
-}
-
-.locationView-page p.styles_simpleReactWeatherCity__zyECF {
-  top: 6px;
-}
-
-.frontpage #weather p.styles_simpleReactWeatherCity__zyECF,
-.module-view p.styles_simpleReactWeatherCity__zyECF {
-  top: 6px;
-  font-size: .7rem !important;
-}
-
-.frontpage #weather-bg,
-.module-view #weather-bg {
-  overflow: hidden;
-  left: calc(50% - 200px);
-  right: calc(50% - 200px);
-  height: 75px !important;
-  bottom: 30px !important;
-  position: absolute;
-  width: 200px;
-}
-
-.frontpage p.styles_simpleReactWeatherTemp__2PnUn {
-  top: 12px !important;
-}
-
-.frontpage .styles_simpleReactWeatherIcon__3sqXV {
-  font-size: 1.1rem;
-}
-
-.frontpage .styles_simpleReactWeather__3uy4l {
-  left: 23px !important;
-  top: 12px !important;
-}
-
-/** Locations-Management */
 .location-management {
-  padding: 80px 0px 80px 0px;
+  padding: 0px 0px 40px 0px;
 }
 
-.location-management .page-navigation {
-  margin: -30px 0;
+.location-management .welcome {
+  background: $neutral1;
+  padding: 30px;
+  font-size: .9rem;
+  border-radius: 5px;
+}
+
+.location-management .favorite {
+  color: $favorite
 }
 
 .location-management .leaflet-container {
@@ -1307,47 +683,33 @@ a:visited.link-to-flickr {
 }
 
 .location-management .row {
-  padding: 10px 30px 10px 30px;
+  padding: 20px 0px 20px 20px;
   width: 100%;
   margin: 0 auto;
-  min-height: 100px;
 }
 
 .location-management .row .headline h6 {
-  font-size: .95em;
-  margin-top: 10px;
+  font-size: 1.05em;
 }
 
-.location-management .row .headline {
-  margin-bottom: 10px,
-}
-
-.location-management .row .headline .time-and-place {
-  display: inline;
-}
-
-.location-management .row .headline .time-and-place div {
-  background: transparent;
-  margin: 0px 5px 0px 0px;
-  padding: 0px;
+.location-management .row .headline .MuiIcon-root {
+  font-size: 1rem;
 }
 
 .location-management .row .description {
   font-size: .8em !important;
-  line-height:1.45em;
-  margin: 10px 20px 0px 20px;
+  line-height: 1.2rem;
+  margin: 0px 20px 0px 20px;
 }
 
 .location-management .row:first-of-type {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin-top: 50px !important;
 }
 
 .location-management .row:last-of-type {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  margin-bottom: 64px !important;
 }
 
 
@@ -1370,24 +732,12 @@ a:visited.link-to-flickr {
   top: 8px;
 }
 
-/** Location single page **/
 .locationView-page .container {
   background: $neutral1;
-  padding: 0px;
 }
 
 .locationView-page .map {
   margin-left: -30px;
-}
-
-.locationView-page .flickr-lightbox img {
-  width: 65px;
-  height: 65px;
-}
-
-.module-view #featuredImage,
-.locationView-page #featuredImage {
-  margin-top: 15px;
 }
 
 .locationView-page .map .leaflet-container {
@@ -1397,7 +747,8 @@ a:visited.link-to-flickr {
 .locationView-page .details {
   overflow-y: auto;
   height: calc(100vh - 56px);
-  padding: 0px;
+  margin-right: -15px;
+
 }
 
 .locationView-page .details h4 {
@@ -1413,15 +764,14 @@ h4 .material-icons {
 .locationView-page .details .go-back .material-icons {
   font-size: .8em;
   font-weight: bold;
-  margin: 0px -30px 0px 5px;
 }
 
 .locationView-page .details .go-back {
   font-size: .7em;
   border-radius: 20px;
   background: transparent;
-  padding: 6.5px 20px 5px 12px;
-  border: 1px solid $neutral2;
+  padding: 5px 20px 5px 12px;
+  border: 1px solid $neutral6;
   font-weight: bold;
   color: $base2;
 }
@@ -1440,54 +790,67 @@ h4 .material-icons {
   margin-top: 20px;
 }
 
-.get-directions {
-  margin-top: 10px;
+.react-slicer {
+  display: block;
 }
 
-.get-directions .material-icons {
-  font-size: .6rem;
-  margin-right: 5px;
+.location-management .top__pagination,
+.location-management .bottom__pagination {
+  margin-left: 5px;
 }
 
-.get-directions a,
-.get-directions a:visited {
-  background: $third;
-  border-color: $third;
-  color: $neutral1;
+.location-management .page-navigation {
+  display: flex;
+  margin-top: 0px
+}
+
+.location-management ul.pagination {
+  margin: 0 auto;
+  text-align: center;
+  font-size: .86rem;
+}
+
+.location-management ul.pagination .material-icons {
   font-size: .8rem;
+  margin: 0px;
+  position: relative;
+  top: 2.3px;
 }
 
-.get-directions a:hover,
-.get-directions a:active {
-  background: $ok;
-  border-color: $ok;
+.location-management #pagination {
+  margin-bottom: 15px !important;
 }
 
-/** Sisältösivut **/
-.content-page p {
-  max-width: calc(100em * 0.5);
+.location-management .date .material-icons {
+  margin-right: 5px;
+  font-weight: bold;
 }
 
-.content-page h3 {
-  margin-top: 40px;
+.location-management .date div,
+.location-management .coordinates {
+  font-size: .7rem;
+  display: inline-block;
+  margin: 5px 5px 0px 0px;
+  background: $neutral2;
+  display: inline-block;
+  padding: 2px 5px 2px 5px;
+  border-radius: 5px;
 }
 
-.content-page h5 {
-  margin-top: 30px;
+.location-management .date .material-icons,
+.location-management .coordinates .material-icons {
+  font-size: .7rem;
+  top: 2px;
+  position: relative;
 }
 
-.content-page h6 {
-  margin-top: 0px;
-}
 
-.content-page .row {
-  margin: 0px -15px 0px -15px !important;
-  padding: 0px !important;
-}
-
-.content-page .space {
-  margin-top: 30px !important;
-}
+/** Search **/
+.search-page .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}
+.search-page .search-head { background:$neutral1; position:sticky; top:0px; padding-top:10px;}
+.search-page .result { padding:5px 8px 5px 8px; font-size:.95rem;}
+.search-page .result time { margin-right:10px;}
+.search-page .result:nth-child(odd) { background:$neutral7;}
 
 /** Video, lightbox, player & toast **/
 .Toastify__toast--default {
@@ -1501,6 +864,7 @@ h4 .material-icons {
 .player-wrapper {
   position: relative;
   padding-top: 56.25%;
+  /* Player ratio: 100 / (1280 / 720) */
 }
 
 .react-player {
@@ -1510,163 +874,95 @@ h4 .material-icons {
 }
 
 #lightboxBackdrop {
-  z-index: 9999;
+  z-index: 9991;
 }
+
+
+.addlocation .btn,
+.editlocation .btn {
+  height: 60px;
+  width: 80px;
+}
+
+.btn-picklocation {
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 20px;
+}
+
+.coordinates .col-sm:first-of-type {
+  padding-left: 0px !important;
+}
+
+.coordinates .col-sm:last-of-type {
+  padding-right: 0px !important;
+}
+
+.addlocation button.btn.btn-success:hover,
+.editlocation button.btn.btn-success:hover {
+  background: $special2;
+}
+
+.addlocation button.btn.btn-danger,
+.editlocation button.btn.btn-danger {
+  background: $base;
+}
+
+.addlocation button.btn.btn-danger:hover .editlocation button.btn.btn-danger:hover {
+  background: $special;
+}
+
+.addlocation .leaflet-container,
+.editlocation .leaflet-container {
+  min-height: 150px !important;
+  width: 100%;
+}
+
+.col-sm-8 .leaflet-container {
+  min-height: 100% !important;
+}
+
+.coordinatedetails .col-sm:first-of-type {
+  padding-left: 0px !important;
+}
+
+.coordinatedetails .col-sm:last-of-type {
+  padding-right: 0px !important;
+}
+
+.flex-container.flex-wrap.some-margin {
+  position: absolute;
+  bottom: -52px !important;
+}
+
+.flex-container.flex-wrap.some-margin h3,
+h5.full-height.no-margin.text {
+  font-size: .9rem;
+}
+
+.flex-container.some-margin {
+  position: absolute;
+  bottom: -63px;
+  font-size: .9rem;
+}
+
+@media screen and (min-width: 1600px) {
+  .react-slicer__view {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
 
 @media screen and (max-width: 1400px) {
   .row {
     width: 100% !important;
   }
 
-  .content-page .row {
-    margin: 0px !important;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .module-view .styles_simpleReactWeather__3uy4l {
-    display: flex;
-  }
-
-  .module-view p.styles_simpleReactWeatherCity__zyECF {
-    top: -0px;
-  }
-
-  .module-view .styles_simpleReactWeatherCityIcon__wxZcO {
-    margin-top: 15px !important;
-    left: 10px !important;
-  }
-
-  .module-view #weather div {
-    top: 0px;
-  }
-
-  .module-view #weather-bg {
-    margin: 5px;
-    left: 20px;
-    right: 0;
-    top: 150px;
-    height: 64px !important;
-  }
-
-  .module-view #weather {
-    top: 40px;
-    left: 40px;
-  }
-
-  #place .place-innercontainer {
-    max-height: calc(50vh - 140px) !important;
-  }
-
-  #location-list .metadata.flex {
-    top: calc(50vh - 130px) !important;
-    position: absolute;
-    width: 100%;
-  }
-
-  #location-list #details {
-    width: 100% !important;
-    height: calc(50vh - 55px);
-    right: 0px !important;
-  }
-
-  #location-list .leaflet-container {
-    height: 50vh;
-    width: 100%;
-    bottom: 0;
-    position: absolute !important;
-  }
-
-  .module-view #details {
-    height: calc(80vh - 112px) !important;
-    bottom: 0px;
-  }
-
-  .module-view #place .place-innercontainer {
-    max-height: 100% !important;
-  }
-
-  .module-view #details .innercontainer {
-    height: auto;
-    top: 0px;
-    width: calc(100% - 30px);
-  }
-
-  .module-view #place #details .metadata {
-    left: 0px;
-  }
-
-  .module-view #place #details .metadata.flex {
-    top: -86px !important;
-    height: 50px;
-    border-bottom: 1px solid $neutral2 !important;
-  }
-
-  .module-view .leaflet-container {
-    height: 20vh !important;
-    top: 0;
-  }
-
-  .module-view #weather {
-    width: auto;
-    height: 0px;
-    top: 10px;
-    left: 10px;
-    width: 200px;
-    height: 100px;
-  }
-
-  .module-view #weather p {
-    margin: 5px 0px 10px 0px !important;
-    text-align: left;
-    width: 100%;
-    margin: 0px;
-    width: 100px;
-    display: block;
-    font-size: 1em;
-  }
-
-  .module-view .styles_simpleReactWeatherCityIcon__wxZcO {
-    margin-left: 10px;
-  }
-
-  .module-view .styles_simpleReactWeatherTemp__2PnUn {
-    left: 10px !important;
-    font-size: 1.2rem !important;
-    margin-left: -100px !important;
-  }
-
-  .module-view #weather div {
-    left: 0px;
-    text-align: left;
-  }
-}
-
-@media screen and (max-height: 550px) {
-
-  .module-view #weather,
-  .module-view #weather-bg {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .locationGrid-page .location {
-    width: 100%;
-    margin: 0 0 0 10px;
-  }
-
-  .scramble-container {
-    width: 400px !important;
-    font-size: 1em !important;
-  }
 }
 
 @media screen and (max-width: 875px) {
 
-  #location-list .throbber-loader {
-    left: 105px !important;
-  }
 
   .location-management .row {
     margin: 0px !important;
@@ -1709,102 +1005,10 @@ h4 .material-icons {
   }
 }
 
-@media screen and (max-width: 850px) {
-  aside {
-    width: 251px;
-  }
-
-  #location-list #filter {
-    width: 250px;
-  }
-
-  #location-list .search,
-  #location-list #places {
-    width: 250px !important;
-  }
-
-  #location-list #place {
-    width: calc(100% - 250px) !important;
-    left: 250px !important;
-  }
-}
-
 
 @media screen and (max-width: 766px) {
-  .locationView-page .styles_simpleReactWeatherCity__zyECF {
-    left: -10px;
-    font-size: .7rem !important;
-    top: 23px !important;
-    position: absolute;
-  }
-
-  .locationView-page .styles_simpleReactWeather__3uy4l {
-    display: flex;
-  }
-
-  .locationView-page .styles_simpleReactWeatherCityIcon__wxZcO {
-    position: absolute;
-    font-size: .2rem !important;
-    margin-top: 15px !important;
-    left: 0px !important;
-  }
-
-  .locationView-page #weather div {
-    top: 0px;
-    float: right;
-  }
-
-  .locationView-page .styles_simpleReactWeatherIcon__3sqXV {
-    left: -110px;
-    top: 0px;
-    font-size: 1.2rem !important;
-    position: absolute;
-  }
-
-  .locationView-page p.styles_simpleReactWeatherTemp__2PnUn {
-    position: relative;
-    top: 14px;
-    left: 90px;
-    font-size: 1.5rem !important;
-  }
-
-  .locationView-page #weather-bg {
-    margin: 5px;
-    left: 20px;
-    right: 0;
-    top: -48px;
-    height: 62px !important;
-    width: 200px;
-  }
-
-  .locationView-page #weather {
-    top: 0px;
-    left: 40px;
-  }
-
-  .locationView-page .innercontainer {
-    margin: 25px 20px 0 20px !important;
-  }
-
-  #page.content-page .row {
-    margin: 0px -20px 0 0 !important;
-  }
-
-  #page.content-page .col-sm:first-of-type {
-    margin-top: 0px;
-  }
-
-  #page.content-page .col-sm {
-    min-width: 100%;
-    margin-top: 30px;
-  }
-
   form .subdetails {
     margin: 0px;
-  }
-
-  #page.locationView-page {
-    background: $neutral1;
   }
 
   .subdetails {
@@ -1825,6 +1029,7 @@ h4 .material-icons {
   .subdetails button {
     width: 100% !important;
   }
+
 
   .editlocation .form-group,
   .addlocation .form-group {
@@ -1892,198 +1097,22 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 600px) {
-  .metadata .open-page.button { line-height: 2rem;}
-  .leaflet-control-container {display: none;}
-  .map-view .leaflet-control-container {display: block;} 
-
-  .frontpage .styles_simpleReactWeatherCity__zyECF {
-    left: -15px;
-    font-size: .7rem !important;
-    top: 21px !important;
-    position: absolute;
-  }
-
-  .frontpage .styles_simpleReactWeather__3uy4l {
-    display: flex;
-  }
-
-  .frontpage.styles_simpleReactWeatherCityIcon__wxZcO {
-    position: absolute;
-    font-size: .2rem !important;
-    margin-top: 15px !important;
-    left: 0px !important;
-  }
-
-  .frontpage #weather div {
-    top: 0px;
-    float: right;
-  }
-
-  .frontpage .styles_simpleReactWeatherIcon__3sqXV {
-    left: -115px;
-    top: 0px;
-    font-size: 1.2rem !important;
-    position: absolute;
-  }
-
-  .frontpage p.styles_simpleReactWeatherTemp__2PnUn {
-    position: relative;
-    top: -3px !important;
-    left: 105px !important;
-    font-size: 1.5rem !important;
-  }
-
-  .frontpage #weather-bg {
-    margin: 5px;
-    left: 20px;
-    right: 0;
-    top: 150px;
-    height: 59px !important;
-    width: 200px;
-  }
-
-  .frontpage #weather {
-    top: 4px;
-    left: 0px;
-  }
-
-  .pagination {
-    display: inline-block
-  }
-
-  .page-navigation .pagination li {
-    float: left;
-  }
-
-  .page-navigation .pagination li a {
-    padding: 10px 6px 10px 6px;
-  }
-
-  .locationGrid-page .date {
-    display: none;
-  }
-
-  #welcome h1 {
-    font-size: 2em;
-  }
-
   nav .module {
     display: none;
-  }
-
-  aside {
-    width: 100%;
-    border: none;
-    z-index: 0;
   }
 
   #page .throbber-loader {
     left: 48% !important;
   }
-
-  #location-list .throbber-loader {
-    left: 46% !important;
-    top: 150px !important;
-  }
-
-  #places .list-group-item {
-    padding: 3px 10px 3px 10px;
-  }
-
-  #places .list-group-item .coordinates {
-    display: none;
-  }
-
-  #location-list #filter {
-    width: 100%;
-  }
-
-  .scramble-container {
-    font-size: 1.1em !important;
-    width: 100% !important;
-  }
-
-  #location-list .search {
-    width: 100% !important;
-  }
-
-  #welcome {
-    height: 500px;
-    margin: 0px;
-  }
-
-  #place::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  #location-list #places {
-    width: 100% !important;
-    height: calc(50vh - 170px) !important;
-  }
-
-  .module-view #details {
-    max-height: auto !important;
-  }
-
-  .module-view #place #details .metadata.flex {
-    top: -30px !important;
-  }
-
-  .module-view #details .innercontainer {
-    top: 50px;
-  }
-
-  #location-list #place {
-    width: 100% !important;
-    height: 60vh;
-    top: calc(50vh - 67px);
-    left: 0px !important;
-    position: absolute !important;
-    border: 1px solid $neutral3;
-    background: $neutral1;
-  }
-
-  #location-list #place #details {
-    top: 20vh;
-    height: auto;
-    padding-bottom: 100px;
-    padding-top: 50px;
-  }
-
-  .module-view #place #details .metadata,
-  #location-list .metadata.flex {
-    top: -30px !important;
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    border-bottom: 1px solid $neutral3 !important;
-  }
-
-  #location-list #place .place-innercontainer {
-    height: auto !important;
-    max-height: 100% !important;
-    min-height: auto !important;
-  }
-
-  #location-list .leaflet-container {
-    position: absolute;
-    width: 100%;
-    top: 0vh;
-    height: 20vh !important;
-  }
 }
 
 @media screen and (max-width: 575px) {
-
-  #page.content-page .innercontainer,
-  #page.content-page .innerwidth {
-    margin: 0px !important;
-  }
-
   .location-management .row .description {
     padding: 0px;
     margin: -20px 0 0 0 !important;
   }
+
+  .location-management .row .control > div { margin-right:15px;}
 
   .location-management .row .control {
     margin: 15px 0px 0px 0px;
@@ -2096,11 +1125,5 @@ h4 .material-icons {
 
   .location-management .row .control a.edit {
     margin: 0px 0px 0px 5px !important;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .flickr-lightbox {
-    overflow: hidden;
   }
 }
