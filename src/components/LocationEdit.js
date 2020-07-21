@@ -39,7 +39,7 @@ const Location = props => {
     featuredImage: '',
     published: true,
   };
-  
+
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
 
   const getLocation = id => {
@@ -142,7 +142,6 @@ const Location = props => {
         console.log ("I've just been clicked for removal :(", point),
     },
   };
-  
 
   return (
     <div id="page" className="editlocation">
@@ -160,8 +159,8 @@ const Location = props => {
               </button>
 
               {currentLocation.published
-                  ? <h4 className="green">Julkaistu</h4>
-                  : <h4 className="red">Luonnos</h4>}
+                ? <h4 className="green">Julkaistu</h4>
+                : <h4 className="red">Luonnos</h4>}
               <h3>Muokkaa '{currentLocation.title}' sijaintia</h3>
               <p>
                 <small>
@@ -428,73 +427,76 @@ const Location = props => {
                   </div>
                 </div>
 
-                <div className="form-group subdetails published">
-                  <div className="row">
-                  <div className="col-sm-4">
-                      <label>Julkaisun tila:</label>
-                      {currentLocation.published
-                  ? <p className="green"><small><strong>Julkaistu</strong></small></p>
-                  : <p className="red"><small><strong>Luonnos</strong></small></p>}
-                    </div>
-                <div className="col-sm-3 import">
-                      <label htmlFor="published">Luonnos</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="published_no"
-                        value="false"
-                        onChange={handleInputChange}
-                        name="published"
-                      />
-                    </div>
-                    <div className="col-sm">
-                      <label htmlFor="not-published">Julkaistu</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="published_yes"
-                        value="true"
-                        onChange={handleInputChange}
-                        name="published"
-                      />
-                    </div> </div></div>
                 <div className="form-group subdetails important">
                   <div className="row">
-        
-                    <div className="col-sm-4">
-                      <label>Tärkeysaste</label>
-                      {currentLocation.markedImportant
-                  ? <p className="green"><small><strong>Tärkeä</strong></small></p>
-                  : <p className="red"><small><strong>Ei-tärkeä</strong></small></p>}
-                    </div>
-                    <div className="col-sm-3 import">
-                      <label htmlFor="important">Tärkeä</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="markedImportant_yes"
-                        value="true"
-                        onChange={handleInputChange}
-                        name="markedImportant"
-                      />
-                    </div>
+
                     <div className="col-sm">
-                      <label htmlFor="not-important">Ei-tärkeä</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="markedImportant_no"
-                        value="false"
-                        onChange={handleInputChange}
-                        name="markedImportant"
-                      />
+                      <label>Tärkeysaste: </label>
+                      {currentLocation.markedImportant
+                        ? <span className="green">
+                            {' '}<small><strong>Tärkeä</strong></small>
+                          </span>
+                        : <span className="red">
+                            {' '}<small><strong>Ei-tärkeä</strong></small>
+                          </span>}
+
+                      {currentLocation.markedImportant
+                        ? <select
+                            className="form-control"
+                            name="markedImportant"
+                            onChange={handleInputChange}
+                          >
+                            <option value="true">Tärkeä</option>
+                            <option value="false">Ei-tärkeä</option>
+                          </select>
+                        : <select
+                            className="form-control"
+                            name="markedImportant"
+                            onChange={handleInputChange}
+                          >
+                            <option value="false">Ei-tärkeä</option>
+                            <option value="true">Tärkeä</option>
+
+                          </select>}
                     </div>
-         
-                  </div></div>
-                  <div className="form-group subdetails">
+                    <div className="col-sm import">
+
+                      <label>Julkaisun tila:</label>
+                      {currentLocation.published
+                        ? <span className="green">
+                            {' '} <small><strong>Julkaistu</strong></small>
+                          </span>
+                        : <span className="red">
+                            {' '} <small><strong>Luonnos</strong></small>
+                          </span>}
+
+                      {currentLocation.markedImportant
+                        ? <select
+                            className="form-control"
+                            name="published"
+                            onChange={handleInputChange}
+                          >
+                            <option value="true">Julkaistu</option>
+                            <option value="false">Luonnos</option>
+                          </select>
+                        : <select
+                            className="form-control"
+                            name="published"
+                            onChange={handleInputChange}
+                          >
+                            <option value="false">Luonnos</option>
+                            <option value="true">Julkaistu</option>
+
+                          </select>}
+
+                    </div>
+
+                  </div>
+                </div>
+                <div className="form-group subdetails">
                   <div className="row">
-                <div className="col-sm">
-                <button
+                    <div className="col-sm">
+                      <button
                         type="button"
                         className="btn btn-danger"
                         onClick={e => {
@@ -510,17 +512,18 @@ const Location = props => {
                       </button>
                     </div>
                     <div className="col-sm">
-                    <button
-                      type="button"
-                      className="btn btn-success"
-                      onClick={e => {
-                        if (window.confirm ('Haluatko päivittää sijainnin?'))
-                          updateLocation (e);
-                      }}
-                    >
-                      Päivitä
-                    </button>
-                    </div> </div>
+                      <button
+                        type="button"
+                        className="btn btn-success"
+                        onClick={e => {
+                          if (window.confirm ('Haluatko päivittää sijainnin?'))
+                            updateLocation (e);
+                        }}
+                      >
+                        Päivitä
+                      </button>
+                    </div>{' '}
+                  </div>
                 </div>
               </div>
             </form>

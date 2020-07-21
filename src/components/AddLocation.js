@@ -32,6 +32,7 @@ const AddLocation = props => {
     flickrTag: '',
     flickrMore: '',
     featuredImage: '',
+    published: '',
   };
   const [location, setLocation] = useState (initialLocationState);
   const [submitted, setSubmitted] = useState (false);
@@ -53,6 +54,7 @@ const AddLocation = props => {
       flickrTag: location.flickrTag,
       flickrMore: location.flickrMore,
       featuredImage: location.featuredImage,
+      published: location.published,
     };
 
     LocationDataService.create (data)
@@ -69,6 +71,7 @@ const AddLocation = props => {
           flickrTag: response.data.flickrTag,
           flickrMore: response.data.flickrMore,
           featuredImage: response.data.featuredImage,
+          published: location.published,
         });
 
         setSubmitted (true);
@@ -106,26 +109,26 @@ const AddLocation = props => {
     document.getElementById ('base64').value = '';
   }
 
-const customMarkerIcon = leafletIcon ({
-  iconUrl: require ('../resources/marker.png'),
-  shadowUrl: require ('../resources/marker-shadow.png'),
-  iconSize: [29, 39],
-  shadowSize: [26, 16],
-  shadowAnchor: [12, -12],
-  popupAnchor: [0, -10],
-});
+  const customMarkerIcon = leafletIcon ({
+    iconUrl: require ('../resources/marker.png'),
+    shadowUrl: require ('../resources/marker-shadow.png'),
+    iconSize: [29, 39],
+    shadowSize: [26, 16],
+    shadowAnchor: [12, -12],
+    popupAnchor: [0, -10],
+  });
 
-const importantMarkerIcon = leafletIcon ({
-  iconUrl: require ('../resources/marker-important.png'),
-  shadowUrl: require ('../resources/marker-shadow.png'),
-  iconSize: [26, 36],
-  shadowSize: [26, 16],
-  shadowAnchor: [12, -12],
-});
+  const importantMarkerIcon = leafletIcon ({
+    iconUrl: require ('../resources/marker-important.png'),
+    shadowUrl: require ('../resources/marker-shadow.png'),
+    iconSize: [26, 36],
+    shadowSize: [26, 16],
+    shadowAnchor: [12, -12],
+  });
 
-const pointVals = [[location.coordinateN, location.coordinateE]];
+  const pointVals = [[location.coordinateN, location.coordinateE]];
 
-const pointMode = {
+  const pointMode = {
     center: [62.4717, 26.2793],
     banner: false,
     control: {
@@ -429,80 +432,89 @@ const pointMode = {
                   </div>
                 </div>
               </div>
-              <div className="form-group subdetails published">
-                  <div className="row">
-                  <div className="col-sm-4">
-                      <label>Julkaisun tila:</label>
-                    </div>
-                <div className="col-sm-3 import">
-                      <label htmlFor="published">Luonnos</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="published_no"
-                        value="false"
-                        onChange={handleInputChange}
-                        name="published"
-                      />
-                    </div>
-                    <div className="col-sm">
-                      <label htmlFor="not-published">Julkaistu</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="published_yes"
-                        value="true"
-                        onChange={handleInputChange}
-                        name="published"
-                      />
-                    </div> </div></div>
-                <div className="form-group subdetails important">
-                  <div className="row">
-        
-                    <div className="col-sm-4">
-                      <label>Tärkeysaste</label>
-                    </div>
-                    <div className="col-sm-3 import">
-                      <label htmlFor="important">Tärkeä</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="markedImportant_yes"
-                        value="true"
-                        onChange={handleInputChange}
-                        name="markedImportant"
-                      />
-                    </div>
-                    <div className="col-sm">
-                      <label htmlFor="not-important">Ei-tärkeä</label>
-                      <input
-                        type="radio"
-                        className="form-control"
-                        id="markedImportant_no"
-                        value="false"
-                        onChange={handleInputChange}
-                        name="markedImportant"
-                      />
-                    </div>
-         
-                  </div></div>
-                  <div className="form-group subdetails">
-                  <div className="row">
-                <div className="col-sm">
+              <div className="form-group subdetails important">
+                <div className="row">
 
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={e => {
-                      if (
-                        window.confirm ('Haluatko lisätä paikan tietokantaan?')
-                      )
-                        saveLocation (e);
-                    }}
-                  >
-                    Tallenna
-                  </button>
-                </div>   </div>
+                  <div className="col-sm">
+                    <label>Tärkeysaste: </label>
+                    {location.markedImportant
+                      ? <span className="green">
+                          {' '}<small><strong>Tärkeä</strong></small>
+                        </span>
+                      : <span className="red">
+                          {' '}<small><strong>Ei-tärkeä</strong></small>
+                        </span>}
+
+                    {location.markedImportant
+                      ? <select
+                          className="form-control"
+                          name="markedImportant"
+                          onChange={handleInputChange}
+                        >
+                          <option value="true">Tärkeä</option>
+                          <option value="false">Ei-tärkeä</option>
+                        </select>
+                      : <select
+                          className="form-control"
+                          name="markedImportant"
+                          onChange={handleInputChange}
+                        >
+                          <option value="false">Ei-tärkeä</option>
+                          <option value="true">Tärkeä</option>
+
+                        </select>}
+                  </div>
+                  <div className="col-sm import">
+
+                    <label>Julkaisun tila:</label>
+                    {location.published
+                      ? <span className="green">
+                          {' '} <small><strong>Julkaistu</strong></small>
+                        </span>
+                      : <span className="red">
+                          {' '} <small><strong>Luonnos</strong></small>
+                        </span>}
+
+                    {location.markedImportant
+                      ? <select
+                          className="form-control"
+                          name="published"
+                          onChange={handleInputChange}
+                        >
+                          <option value="true">Julkaistu</option>
+                          <option value="false">Luonnos</option>
+                        </select>
+                      : <select
+                          className="form-control"
+                          name="published"
+                          onChange={handleInputChange}
+                        >
+                          <option value="false">Luonnos</option>
+                          <option value="true">Julkaistu</option>
+
+                        </select>}
+                  </div>
+                </div>
+              </div>
+              <div className="form-group subdetails">
+                <div className="row">
+                  <div className="col-sm">
+                    <button
+                      type="button"
+                      className="btn btn-success"
+                      onClick={e => {
+                        if (
+                          window.confirm (
+                            'Haluatko lisätä paikan tietokantaan?'
+                          )
+                        )
+                          saveLocation (e);
+                      }}
+                    >
+                      Tallenna
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </form>}
