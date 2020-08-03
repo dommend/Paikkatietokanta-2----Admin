@@ -5,6 +5,8 @@ import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import Moment from 'react-moment';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -20,6 +22,7 @@ class GridView extends React.Component {
     this.state = {
       pager: {},
       pageOfItems: [],
+      isLoading: true
     };
   }
 
@@ -44,7 +47,7 @@ class GridView extends React.Component {
       )
         .then (response => response.json ())
         .then (({pager, pageOfItems}) => {
-          this.setState ({pager, pageOfItems});
+          this.setState ({pager, pageOfItems, isLoading: false});
         });
     }
   }
@@ -79,6 +82,11 @@ class GridView extends React.Component {
             <p>Voit kirjautua hostin Cpaneliin <a target="_blank" rel="noopener noreferrer" href="https://paikkatietokanta.net/cpanel">tästä.</a>
           </p>
         </div>
+
+
+        {this.state.isLoading && <div className="loadingAnimation"><Spinner animation="border" variant="primary" /></div> }
+
+
         {pager.pages &&
           pager.pages.length &&
           <div className="page-navigation">

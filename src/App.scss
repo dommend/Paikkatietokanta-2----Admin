@@ -548,38 +548,8 @@ nav a.navbar-brand:active {
 
 
 /** Ennen lataamista **/
-.top__pagination,
-.bottom__pagination {
-  display: none !important;
-}
 
-.throbber-loader {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px,
-}
-
-/** Lataamisen jäkeen */
-
-body.locations-loaded .throbber-loader {
-  display: none !important;
-}
-
-body.locations-loaded .top__pagination,
-body.locations-loaded .bottom__pagination {
-  display: block !important;
-}
-
-#page.location-management #filter {
-  margin-top: 0px;
-  margin-bottom: 20px !important;
-}
-
-
+.loadingAnimation { margin:0 auto; text-align:center; width:100%;}
 
 .btn-secondary.focus,
 .btn-secondary:focus .material-icons,
