@@ -8,6 +8,8 @@ import Dashboard from './components/Dashboard';
 import AddLocation from "./components/AddLocation";
 import LocationEdit from "./components/LocationEdit";
 import NotFoundPage from './components/NotFoundPage';
+import TagControlPage from './components/TagControl';
+import TagEditPage from './components/TagEdit';
 import Search from './components/Search';
 
 function App() {
@@ -29,12 +31,18 @@ function App() {
                 <span className="material-icons">dashboard</span> Dashboard
               </NavLink >
             </li>
-              <li className="nav-item">
+            <li className="nav-item">
                 <NavLink to={"/add"} className="nav-link add-new" activeClassName="active">
                 <span className="material-icons">add_box</span> Lisää uusi
               </NavLink >
               </li>
 
+            <li className="nav-item">
+                <NavLink to={"/tagmanagement"} className="nav-link add-new" activeClassName="active">
+                <span className="material-icons">add_box</span> Avainsanojen hallinta
+              </NavLink >
+              </li>
+         
               <li className="nav-item">
                 <NavLink to={"/search"} className="nav-link" activeClassName="active">
                 <span className="material-icons">search</span> Etsi
@@ -53,6 +61,9 @@ function App() {
           <Route exact path="/add" component={AddLocation} />
           <Route exact path="/edit/:id" component={LocationEdit} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/tagmanagement" component={TagControlPage} />
+          <Route exact path="/tagedit/:id" component={TagEditPage} />
+
           { /* 404-sivu */}
           <Route path="*" component={NotFoundPage} />
         </Switch>

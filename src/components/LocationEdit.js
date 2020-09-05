@@ -6,6 +6,7 @@ import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
 import LocationPicker from 'react-leaflet-location-picker';
 import {icon as leafletIcon} from 'leaflet';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom';
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -41,11 +42,14 @@ const Location = props => {
   };
 
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
+  const [locationTags, setLocationTags] = useState([]);
+
 
   const getLocation = id => {
     LocationDataService.get (id)
       .then (response => {
         setCurrentLocation (response.data);
+        setLocationTags(response.data.tags);
         console.log (response.data);
       })
       .catch (e => {
@@ -127,6 +131,18 @@ const Location = props => {
     [currentLocation.coordinateN, currentLocation.coordinateE],
   ];
 
+
+  const removeTag = (e) => {
+    const tagID = e.target.value;
+    LocationDataService.removeTagFromArticle(tagID, { data: currentLocation.id })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   const pointMode = {
     banner: false,
     control: {
@@ -140,7 +156,7 @@ const Location = props => {
         }),
       onRemove: point =>
         console.log ("I've just been clicked for removal :(", point),
-    },
+    }
   };
 
   return (
@@ -425,6 +441,28 @@ const Location = props => {
                       />
                     </div>
                   </div>
+                </div>
+
+              <div className="form-group subdetails important">
+                <div className="row">
+                  
+                    {locationTags &&
+                      locationTags.map((locationTag, index) => (
+                      <ul id="taglist">
+                        <li key={index} className="tag"><Link to={"/tagedit/" + locationTag.id}>{locationTag.tagName}</Link>
+
+                          <button type="submit" className="removetag" value={locationTag.id} onClick={e => {
+                            removeTag(e);
+                          }}
+                          >
+                            X
+                  </button>
+
+                        </li>
+                      </ul> 
+                      ))}
+                 
+                </div>
                 </div>
 
                 <div className="form-group subdetails important">

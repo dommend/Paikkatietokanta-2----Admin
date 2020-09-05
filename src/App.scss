@@ -114,6 +114,7 @@ $favorite: crimson;
 }
 
 /** General **/
+.TagControl #scroll-table::-webkit-scrollbar,
 #page::-webkit-scrollbar {
   width: 10px;
 }
@@ -122,7 +123,7 @@ $favorite: crimson;
   scrollbar-color: $neutral5 white;
   scrollbar-width: thin;
 }
-
+.TagControl #scroll-table::-webkit-scrollbar-thumb,
 #page::-webkit-scrollbar-thumb {
   background: $neutral5;
 }
@@ -437,6 +438,7 @@ small.even-smaller {
   color: $neutral1;
 }
 
+.edittag .go-back,
 .addlocation .go-back,
 .editlocation .go-back {
   margin-bottom: 20px;
@@ -448,9 +450,15 @@ small.even-smaller {
 .subdetails,
 .important { margin-top:20px;}
 
+.edittag .subdetails button,
 .addlocation .subdetails button,
 .editlocation .subdetails button { width:100%;}
-
+.edittag .subdetails { margin:0px;}
+.editlocation ul#taglist { padding:0px; margin:0px;}
+.editlocation li.tag { list-style:none; border:1px solid $neutral6; border-radius: 50px; padding:5px 5px 5px 15px; margin-right:10px;}
+.editlocation li.tag a { margin-right:10px !important;}
+.editlocation .removetag { width:30px !important; height:30px !important; border-radius:30px; font-size:11px; padding:0px; margin:0px; font-weight:bold;} 
+.editlocation .removetag:hover { color:$neutral1;}
 /** Nav **/
 .navbar {
   z-index: 1 !important;
@@ -814,6 +822,24 @@ h4 .material-icons {
   position: relative;
 }
 
+/** Tag control **/
+
+// .TagControl .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}
+.TagControl #scroll-table { height:290px; width:100%; 
+  overflow-y: scroll !important;}
+
+.TagControl #created-tags {
+  height:290px !important;  overflow-x:hidden; padding:0px; margin-bottom:3px; }
+.TagControl .table td, 
+.TagControl .table th { border-top:none; padding:3px 15px 3px 10px;}
+.TagControl .table tr { border:1px solid $neutral6; }
+.TagControl .table tr:nth-child(odd) { background:$neutral7; }
+.TagControl .tagName { width:80%;}
+.TagControl .edit {  text-align:center; border:none; border-left:1px solid $neutral6; border-radius:0px;}
+
+.TagControl button.btn.btn-success { width:100%; margin:20px 0px 5px 0px;}
+.TagControl select#selectTagtoAdd,
+.TagControl select#selectArticle { margin-top:10px; width:100%; min-width:100%; max-width:100%;}
 
 /** Search **/
 .search-page .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}

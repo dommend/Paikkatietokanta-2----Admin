@@ -33,6 +33,42 @@ const findMarkedImportant = () => {
   return http.get(`/locations/markedImportant`);
 }
 
+// Tags
+
+const getAllTags = () => {
+  return http.get("/locations/tags");
+};
+
+const getTag = id => {
+  return http.get(`/locations/tags/${id}`);
+};
+
+const findTag = id => {
+  return http.get(`/locations/tags/name/${id}`);
+};
+
+
+const createTag = data => {
+  return http.post("/locations/tags/create", data);
+}
+
+const addTagToPost = data => {
+  return http.post("/locations/tag/addToArticle", data);
+}
+
+const removeTag = (id) => {
+  return http.delete(`/locations/delete/tag/${id}`);
+};
+
+const removeTagFromArticle = (id, data) => {
+return http.put(`/locations/delete/removetagfromarticle/${id}`, data);
+};
+
+
+const updateTag = (id, data) => {
+  return http.put(`/locations/update/tag/${id}`, data);
+};
+
 export default {
   getAll,
   get,
@@ -41,5 +77,13 @@ export default {
   remove,
   findByTitle,
   findMarkedImportant,
-  upload
+  upload,
+  getAllTags,
+  getTag,
+  findTag,
+  createTag,
+  addTagToPost,
+  removeTag,
+  removeTagFromArticle,
+  updateTag
 };
