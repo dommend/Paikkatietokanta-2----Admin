@@ -100,7 +100,7 @@ exports.findOne = (req, res) => {
       {
         model: Tag,
         as: "tags",
-        attributes: ["id", "tagName"],
+        attributes: ["id", "tagName", "tagDescription", "tagURL", "tagCoordinateN", "tagCoordinateE"],
         through: {
           attributes: [],
         },
@@ -285,7 +285,11 @@ exports.createTag = (req, res) => {
   const locationTag = {
    tagName: req.body.name,
    tagDescription: req.body.description,
-   tagFeaturedImage: req.body.featuredImage}
+   tagFeaturedImage: req.body.featuredImage,
+   tagURL: req.body.url,
+   tagCoordinateN: req.body.coordinateN,
+   tagCoordinateE: req.body.coordinateE
+  }
    Tag.findAndCountAll({
     where: {
       tagName: {

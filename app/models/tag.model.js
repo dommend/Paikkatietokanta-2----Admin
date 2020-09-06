@@ -12,6 +12,22 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         trim: true
       },
+      tagURL: {
+        type: Sequelize.STRING,
+        trim: true
+      },
+      tagFeaturedImage: {
+        type: Sequelize.STRING,
+        trim: true
+      },
+      tagCoordinateE: {
+        type: Sequelize.STRING(15),
+        trim: true 
+      },
+      tagCoordinateN: {
+        type: Sequelize.STRING(15),
+        trim: true 
+      },
     });
     return Tags;
   };
