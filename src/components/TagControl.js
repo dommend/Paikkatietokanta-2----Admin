@@ -181,7 +181,6 @@ const LocationsTagList = () => {
                 size="small"
                 id="tagCoordinateN"
                 name="tagCoordinateN"
-                minLength="2"
                 className="form-control"
                 onChange={handleTags}
               />
@@ -194,7 +193,6 @@ const LocationsTagList = () => {
                 size="small"
                 id="tagCoordinateE"
                 name="tagCoordinateE"
-                minLength="2"
                 className="form-control"
                 onChange={handleTags}
               />

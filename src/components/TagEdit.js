@@ -166,7 +166,6 @@ const Location = props => {
                 size="small"
                 id="tagCoordinateN"
                 name="tagCoordinateN"
-                minLength="2"
                 value={currentTag.tagCoordinateN}
                 className="form-control"
                 onChange={handleInputChange}
@@ -179,7 +178,6 @@ const Location = props => {
                 size="small"
                 id="tagCoordinateE"
                 name="tagCoordinateE"
-                minLength="2"
                 value={currentTag.tagCoordinateE}
                 className="form-control"
                 onChange={handleInputChange}
