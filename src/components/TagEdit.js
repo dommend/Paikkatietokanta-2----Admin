@@ -28,6 +28,9 @@ const Location = props => {
         tagName: '',
         tagDescription: '',
         tagFeaturedImage:'',
+        tagURL:'',
+        tagCoordinateE: '',
+        tagCoordinateN: ''
       };
     
   const [currentTag, setCurrentTag] = useState (initialLocationState);
@@ -142,6 +145,46 @@ const Location = props => {
                 onChange={handleInputChange}
                 className="form-control"
               /> 
+              <label htmlFor="tagURL">URL</label>
+                <input
+                variant="outlined"
+                type="text"
+                size="small"
+                id="tagURL"
+                name="tagURL"
+                minLength="2"
+                className="form-control"
+                value={currentTag.tagURL}
+                onChange={handleInputChange}
+              /><br />
+                 <div className="row nomargin">
+              <div className="col-sm">
+                <label htmlFor="tagCoordinateN">North</label>
+                <input
+                variant="outlined"
+                type="number"
+                size="small"
+                id="tagCoordinateN"
+                name="tagCoordinateN"
+                minLength="2"
+                value={currentTag.tagCoordinateN}
+                className="form-control"
+                onChange={handleInputChange}
+              /></div>
+              <div className="col-sm">
+                <label htmlFor="tagCoordinateE">East</label>
+                <input
+                variant="outlined"
+                type="number"
+                size="small"
+                id="tagCoordinateE"
+                name="tagCoordinateE"
+                minLength="2"
+                value={currentTag.tagCoordinateE}
+                className="form-control"
+                onChange={handleInputChange}
+              /></div></div>
+
               </div>  
               </div>    
               <div className="form-group subdetails">

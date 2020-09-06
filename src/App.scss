@@ -373,6 +373,7 @@ ol li::before {
   background-color: $fourth;
 }
 
+
 /** Add, edit, places **/
 .row {
   margin-left: 0px !important;
@@ -825,9 +826,9 @@ h4 .material-icons {
 /** Tag control **/
 
 // .TagControl .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}
-.TagControl #scroll-table { height:290px; width:100%; 
+.TagControl #scroll-table { height:510px; width:100%; 
   overflow-y: scroll !important;}
-
+.TagControl label { font-weight: bold;}
 .TagControl #created-tags {
   height:290px !important;  overflow-x:hidden; padding:0px; margin-bottom:3px; }
 .TagControl .table td, 
@@ -840,6 +841,15 @@ h4 .material-icons {
 .TagControl button.btn.btn-success { width:100%; margin:20px 0px 5px 0px;}
 .TagControl select#selectTagtoAdd,
 .TagControl select#selectArticle { margin-top:10px; width:100%; min-width:100%; max-width:100%;}
+
+.edittag .nomargin .col-sm:first-child,
+.TagControl .nomargin .col-sm:first-child { padding:0px 5px 0px 0px !important;}
+
+.edittag .nomargin .col-sm:last-child,
+.TagControl .nomargin .col-sm:last-child { padding:0px 0px 0px 5px !important;}
+
+.edittag .row.nomargin { width:100%; }
+.TagControl .row { margin-bottom:10px;}
 
 /** Search **/
 .search-page .innercontainer { background:$neutral1; padding:15px 30px 30px 30px;}
