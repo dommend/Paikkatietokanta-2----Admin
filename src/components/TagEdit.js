@@ -162,6 +162,7 @@ const Location = props => {
                 <label htmlFor="tagCoordinateN">North</label>
                 <input
                 variant="outlined"
+                type="number" step="any"
                 size="small"
                 id="tagCoordinateN"
                 name="tagCoordinateN"
@@ -173,6 +174,7 @@ const Location = props => {
                 <label htmlFor="tagCoordinateE">East</label>
                 <input
                 variant="outlined"
+                type="number" step="any"
                 size="small"
                 id="tagCoordinateE"
                 name="tagCoordinateE"

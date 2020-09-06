@@ -176,6 +176,7 @@ const LocationsTagList = () => {
               <div className="col-sm">
               <label htmlFor="coordinates">North</label>
                 <input
+                type="number" step="any"
                 variant="outlined"
                 size="small"
                 id="tagCoordinateN"
@@ -187,6 +188,7 @@ const LocationsTagList = () => {
               <div className="col-sm">
               <label htmlFor="coordinates">East</label>
                 <input
+                type="number" step="any"
                 variant="outlined"
                 size="small"
                 id="tagCoordinateE"
