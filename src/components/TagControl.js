@@ -177,7 +177,6 @@ const LocationsTagList = () => {
               <label htmlFor="coordinates">North</label>
                 <input
                 variant="outlined"
-                type="number"
                 size="small"
                 id="tagCoordinateN"
                 name="tagCoordinateN"
@@ -189,7 +188,6 @@ const LocationsTagList = () => {
               <label htmlFor="coordinates">East</label>
                 <input
                 variant="outlined"
-                type="number"
                 size="small"
                 id="tagCoordinateE"
                 name="tagCoordinateE"
